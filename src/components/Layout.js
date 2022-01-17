@@ -10,6 +10,9 @@ const Layout = ({ children }) => {
         <script type="text/javascript" src={withPrefix("js/bootstrap.min.js")} />
         <script type="text/javascript" src={withPrefix("js/polyfill.js")} />
         <script type="text/javascript" src={withPrefix("js/main.js")} />
+        <script type="text/javascript" src={withPrefix("js/tiny-slider.js")} defer />
+        <script type="text/javascript" src={withPrefix("js/client-slider.js")} />
+        <script type="text/javascript" src={withPrefix("js/section-menu.js")} />
       </Helmet>
 
       {children}

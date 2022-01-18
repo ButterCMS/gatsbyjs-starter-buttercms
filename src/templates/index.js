@@ -5,20 +5,28 @@ import HeroSection from "../components/HeroSection"
 import TestimonialsSection from "../components/TestimonialsSection"
 import BlogSection from "../components/BlogSection"
 import Spinner from "../components/Spinner"
+import ScrollToTop from "../components/ScrollToTop"
 import TwoColumnWithImageSection from "../components/TwoColumnWithImageSection"
 import Header from "../containers/Header"
 import Footer from "../containers/Footer"
-import { graphql } from "gatsby"
 
 // markup
-const IndexPage = ({ data }) => {
-  const bodyElements = data.butterPage.body
-  const blogPosts = data.allButterPost.nodes
+const IndexPage = ({ pageContext: { pageData, menuData } }) => {
+  console.log(pageData)
+  console.log(menuData)
+
+  if (pageData.errors && pageData > 0) {
+    return <h1>je tu chyba</h1>
+  } else {
+
+  const bodyElements = pageData.data.butterPage.body
+  const blogPosts = pageData.data.allButterPost.nodes
+  const menuItems = menuData.data.butterCollection.value[0].menu_items
 
   return (
     <Layout>
       <Spinner />
-      <Header />
+      <Header menuItems={menuItems} />
 
       {/* <!-- ========================= hero no API token ========================= --> */}
       {/* <!--     <section id="home" className="hero-section">
@@ -42,16 +50,16 @@ const IndexPage = ({ data }) => {
       {/* <!-- ========================= hero-section end ========================= --> */}
 
 
-      {bodyElements.map(bodyElement => {
+      {bodyElements.map((bodyElement, i) => {
         switch (bodyElement.type) {
           case "hero":
-            return <HeroSection fields={bodyElement.fields} />
+            return <HeroSection fields={bodyElement.fields} key={i}/>
           case "two_column_with_image":
-            return <TwoColumnWithImageSection fields={bodyElement.fields} />
+            return <TwoColumnWithImageSection fields={bodyElement.fields} key={i}/>
           case "features":
-            return <FeaturesSection fields={bodyElement.fields} />
+            return <FeaturesSection fields={bodyElement.fields} key={i}/>
           case "testimonials":
-            return <TestimonialsSection fields={bodyElement.fields} />
+            return <TestimonialsSection fields={bodyElement.fields} key={i}/>
           default:
             return null
         }
@@ -59,9 +67,7 @@ const IndexPage = ({ data }) => {
 
       <BlogSection blogPosts={blogPosts} />
 
-      <a href="#" className="scroll-top btn-hover">
-        <i className="lni lni-chevron-up"></i>
-      </a>
+      <ScrollToTop />
 
       <Footer />
 
@@ -77,50 +83,51 @@ const IndexPage = ({ data }) => {
     </Layout>
   )
 }
+}
 
-export const query = graphql`
-  query LandingPageQuery {
-    butterPage(slug: {eq: "landing-page-with-components"}) {
-      seo {
-        title
-        description
-      }
-      body {
-        fields {
-          headline
-          subheadline
-          scroll_anchor_id
-          button_label
-          button_url
-          image
-          image_position
-          testimonial {
-            name
-            quote
-            title
-          }
-          features {
-            description
-            headline
-            icon
-          }
-        }
-        type
-      }
-    }
-    allButterPost(
-      limit: 2
-      sort: {order: ASC, fields: published}
-      filter: {status: {eq: "published"}}
-    ) {
-      nodes {
-        title
-        summary
-        url
-        featured_image
-        featured_image_alt
-      }
-    }
-  }`
+// export const query = graphql`
+//   query LandingPageQuery {
+//     butterPage(slug: {eq: "landing-page-with-components"}) {
+//       seo {
+//         title
+//         description
+//       }
+//       body {
+//         fields {
+//           headline
+//           subheadline
+//           scroll_anchor_id
+//           button_label
+//           button_url
+//           image
+//           image_position
+//           testimonial {
+//             name
+//             quote
+//             title
+//           }
+//           features {
+//             description
+//             headline
+//             icon
+//           }
+//         }
+//         type
+//       }
+//     }
+//     allButterPost(
+//       limit: 2
+//       sort: {order: ASC, fields: published}
+//       filter: {status: {eq: "published"}}
+//     ) {
+//       nodes {
+//         title
+//         summary
+//         url
+//         featured_image
+//         featured_image_alt
+//       }
+//     }
+//   }`
 
 export default IndexPage

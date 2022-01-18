@@ -1,8 +1,7 @@
 import * as React from "react"
 import "../../assets/scss/main.scss"
-import { StaticQuery, graphql } from "gatsby"
 
-const Header = () => {
+const Header = ({ menuItems }) => {
   return (
     <header className="header">
       <div className="navbar-area">
@@ -22,30 +21,11 @@ const Header = () => {
                 <div className="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                   <div className="ms-auto">
                     <ul id="nav" className="navbar-nav ms-auto">
-                      <StaticQuery
-                        query={graphql`
-                                query MenuItemsQuery {
-                                  butterCollection(key: {eq: "navigation_menu"}) {
-                                    value {
-                                      menu_items {
-                                        label
-                                        url
-                                      }
-                                    }
-                                  }
-                                }
-                              `}
-                        render={data => (
-                          <>
-                            {data.butterCollection.value[0].menu_items.map(item => (
-                              <li key={item.label} className="nav-item">
-                                <a className="nav-link" href={item.url}>{item.label}</a>
-                              </li>
-                            ))}
-                          </>
-                        )}
-                      />
-
+                      {menuItems.map(item =>
+                        <li key={item.label} className="nav-item">
+                          <a className="nav-link" href={item.url}>{item.label}</a>
+                        </li>
+                      )}
                     </ul>
                   </div>
                 </div> {/* <!-- navbar collapse --> */}

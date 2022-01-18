@@ -60,12 +60,21 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  createPage({
-    path: `/`,
-    component: require.resolve(`./src/templates/index.js`),
-    context: {
-      pageData: landingPage,
-      menuData: menuItemsData
-    },
-  });
+  // if (landingPage.errors) {
+  //   createPage({
+  //     path: `/`,
+  //     component: require.resolve(`./src/pages/404.js`),
+  //     context: {
+  //     },
+  //   });
+  // } else {
+    createPage({
+      path: `/`,
+      component: require.resolve(`./src/templates/index.js`),
+      context: {
+        pageData: landingPage,
+        menuData: menuItemsData
+      },
+    });
+  // }
 }

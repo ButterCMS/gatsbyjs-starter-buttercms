@@ -1,8 +1,7 @@
 import * as React from "react"
-import "../../assets/scss/main.scss"
-import { StaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 
-const Footer = () => {
+const Footer = ({ menuItems }) => {
   return (
     <footer className="footer pt-120">
       <div className="container">
@@ -27,12 +26,9 @@ const Footer = () => {
             <div className="footer-widget">
               <h3>About Us</h3>
               <ul className="links">
-                <li><a className="page-scroll active" href="#home">Home</a></li>
-                <li><a className="page-scroll" href="#about">About</a></li>
-                <li><a className="page-scroll" href="#features">Features</a></li>
-                <li><a className="page-scroll" href="#tryit">Try It</a></li>
-                <li><a className="page-scroll" href="#testimonials">Testimonials</a></li>
-                <li><a className="page-scroll" href="#blog">Blog</a></li>
+                {menuItems.map(item =>
+                  <li><Link key={item.label} className="page-scroll" activeClassName="active" to={`/${item.url}`}>{item.label}</Link></li>
+                )}
               </ul>
             </div>
           </div>

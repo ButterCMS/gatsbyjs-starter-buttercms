@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 
 const BlogPostTile = (props) => {
   return (
@@ -13,11 +14,11 @@ const BlogPostTile = (props) => {
           />
         </div>
         <div className="blog-body">
-          <h5 className="package-name"><a href="#">{props.title}</a></h5>
+          <h5 className="package-name"><Link to={`/blog/${props.url}`}>{props.title}</Link></h5>
           <p>{props.summary}</p>
         </div>
         <div className="blog-footer">
-          <a href={`/blog/${props.url}`} className="main-btn btn-hover">Read More</a>
+          <Link to={`/blog/${props.url}`} className="main-btn btn-hover">Read More</Link>
         </div>
       </div>
     </div>

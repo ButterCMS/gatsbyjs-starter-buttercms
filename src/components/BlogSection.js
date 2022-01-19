@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import BlogPostTile from "./BlogPostTile"
 
 const BlogSection = (props) => {
@@ -13,10 +14,10 @@ const BlogSection = (props) => {
                 to launch a new company blog.
               </p>
               <p>
-                <a
-                  href="blog.html"
+                <Link
+                  to="/blog"
                   className="main-btn btn-hover mt-5">View All Blog Posts
-                </a>
+                </Link>
               </p>
             </div>
           </div>

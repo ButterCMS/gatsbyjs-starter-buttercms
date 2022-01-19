@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import "../../assets/scss/main.scss"
 
 const Header = ({ menuItems }) => {
@@ -23,7 +24,7 @@ const Header = ({ menuItems }) => {
                     <ul id="nav" className="navbar-nav ms-auto">
                       {menuItems.map(item =>
                         <li key={item.label} className="nav-item">
-                          <a className="nav-link" href={item.url}>{item.label}</a>
+                          <Link className="nav-link" activeClassName="active" to={`/${item.url}`}>{item.label}</Link>
                         </li>
                       )}
                     </ul>

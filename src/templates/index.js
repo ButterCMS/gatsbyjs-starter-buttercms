@@ -11,15 +11,7 @@ import TwoColumnWithImageSection from "../components/TwoColumnWithImageSection"
 import Header from "../containers/Header"
 import Footer from "../containers/Footer"
 
-// markup
 const IndexPage = ({ pageContext: { pageData, menuData } }) => {
-  console.log(pageData)
-  console.log(menuData)
-
-  if (pageData && pageData.errors) {
-    return <h1>je tu chyba</h1>
-  } else {
-
   const bodyElements = pageData.data.butterPage.body
   const blogPosts = pageData.data.allButterPost.nodes
   const menuItems = menuData.data.butterCollection.value[0].menu_items
@@ -29,7 +21,7 @@ const IndexPage = ({ pageContext: { pageData, menuData } }) => {
       <Spinner />
       <Header menuItems={menuItems} />
 
-      <NoApiTokenSection />
+      {/* <NoApiTokenSection /> */}
 
       {bodyElements.map((bodyElement, i) => {
         switch (bodyElement.type) {
@@ -50,7 +42,7 @@ const IndexPage = ({ pageContext: { pageData, menuData } }) => {
 
       <ScrollToTop />
 
-      <Footer />
+      <Footer menuItems={menuItems} />
 
       {/* <!-- =================== JS All Templates ========================= --> */}
       {/* <script src="js/bootstrap.min.js"></script>
@@ -63,7 +55,6 @@ const IndexPage = ({ pageContext: { pageData, menuData } }) => {
       <script src="js/section-menu.js"></script> */}
     </Layout>
   )
-}
 }
 
 export default IndexPage

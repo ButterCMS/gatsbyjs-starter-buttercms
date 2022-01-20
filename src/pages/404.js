@@ -30,7 +30,7 @@ const codeStyles = {
 const NotFoundPage = () => {
   if (!process.env.BUTTER_CMS_API_KEY) {
     return (
-      <Layout>
+      <Layout menuItems={[]}>
         <NoApiTokenSection />
       </Layout>
     )

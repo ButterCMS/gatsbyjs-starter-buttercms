@@ -6,6 +6,7 @@ import ScrollToTop from "../components/ScrollToTop"
 import NoApiTokenSection from "../components/NoApiTokenSection"
 import BlogPostsSection from "../components/BlogPostsSection"
 import BlogPostsList from "../components/BlogPostsList"
+import SEO from "../components/SEO"
 import Header from "../containers/Header"
 import Footer from "../containers/Footer"
 
@@ -38,25 +39,14 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
 
   return (
     <Layout>
+      <SEO title={mainEntityName || "Blog"} description={ mainEntityName ? `All posts for ${mainEntityName}` : "All ButterCMS blog posts"} />
       <Header menuItems={menuItems} />
-
-      {/* <NoApiTokenSection /> */}
 
       <BlogPostsSection type={pageType} text={mainEntityName || query} />
       <BlogPostsList blogPosts={blogPosts} categories={categories} />
 
       <ScrollToTop />
       <Footer menuItems={menuItems} />
-
-      {/* <!-- =================== JS All Templates ========================= --> */}
-      {/* <script src="js/bootstrap.min.js"></script>
-      <script src="js/polyfill.js"></script>
-      <script src="js/main.js"></script> */}
-
-      {/* <!-- ================= JS Index HTML only ========================= --> */}
-      {/* <script src="js/tiny-slider.js"></script>
-      <script src="js/client-slider.js"></script>
-      <script src="js/section-menu.js"></script> */}
     </Layout>
   )
 }

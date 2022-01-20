@@ -10,6 +10,7 @@ import NoApiTokenSection from "../components/NoApiTokenSection"
 import TwoColumnWithImageSection from "../components/TwoColumnWithImageSection"
 import Header from "../containers/Header"
 import Footer from "../containers/Footer"
+import SEO from "../components/SEO";
 
 const IndexPage = ({ pageContext: { pageData, menuData } }) => {
   const bodyElements = pageData.data.butterPage.body
@@ -18,10 +19,10 @@ const IndexPage = ({ pageContext: { pageData, menuData } }) => {
 
   return (
     <Layout>
+      <SEO { ...pageData.data.butterPage.seo } />
+
       <Spinner />
       <Header menuItems={menuItems} />
-
-      {/* <NoApiTokenSection /> */}
 
       {bodyElements.map((bodyElement, i) => {
         switch (bodyElement.type) {

@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 
 const TwoColumnWithImageSection = (props) => {
   return (
@@ -15,7 +16,7 @@ const TwoColumnWithImageSection = (props) => {
               <div className="section-title">
                 <h2 className="mb-20">{props.fields.headline}</h2>
                 <p dangerouslySetInnerHTML={{ __html: props.fields.subheadline }}></p>
-                <a href={props.fields.button_url} className="main-btn btn-hover border-btn mt-30">{props.fields.button_label}</a>
+                <Link href={props.fields.button_url} className="main-btn btn-hover border-btn mt-30">{props.fields.button_label}</Link>
               </div>
             </div>
           </div>

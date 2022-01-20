@@ -6,6 +6,7 @@ import NoApiTokenSection from "../components/NoApiTokenSection"
 import Header from "../containers/Header"
 import Footer from "../containers/Footer"
 import BlogWidget from "../components/BlogWidget"
+import { Link } from "gatsby"
 
 const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
   const article = pageData
@@ -16,8 +17,6 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
       <Spinner />
       <Header menuItems={menuItems} />
 
-      {/* <NoApiTokenSection /> */}
-
       <section id="blog-header" className="single-post-nav">
         <div className="container">
           <div className="row justify-content-center">
@@ -25,8 +24,8 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
               <div className="section-title text-center">
                 <h2>{article.title}</h2>
                 <ul className="breadcrumb-nav">
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/blog">Blog</a></li>
+                  <li><Link href="/">Home</Link></li>
+                  <li><Link href="/blog">Blog</Link></li>
                   <li>{article.title}</li>
                 </ul>
               </div>
@@ -52,7 +51,7 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                     </li>
                     <li>
                       {article.tags.map(tag => {
-                        return <a href={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</a>
+                        return <Link href={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</Link>
                       })}
                     </li>
                   </ul>

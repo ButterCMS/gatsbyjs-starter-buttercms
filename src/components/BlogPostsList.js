@@ -33,9 +33,10 @@ const BlogPostsList = ({ blogPosts, categories }) => {
                         </li>
                       </ul>
                     </div>
-                    <div className="single-post-thumbnail">
+                    {post.featured_image && <div className="single-post-thumbnail">
                       <img src={post.featured_image} alt={post.featured_image_alt} />
                     </div>
+                    }
                     <div className="blog-roll-card-body">
                       <p dangerouslySetInnerHTML={{ __html: post.summary }}></p>
                     </div>

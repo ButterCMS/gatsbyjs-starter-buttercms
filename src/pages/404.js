@@ -36,6 +36,8 @@ const NotFoundPage = () => {
     )
   }
 
+  console.error("Your Butter token is set to an invalid value. Please verify your token is correct.")
+
   return (
     <main style={pageStyles}>
       <title>Not found</title>

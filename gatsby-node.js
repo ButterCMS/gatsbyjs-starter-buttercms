@@ -1,9 +1,10 @@
 const butterCmsApiKey = process.env.BUTTERCMS_API_KEY
+const butterCmsPreview = process.env.BUTTERCMS_PREVIEW === "true" || process.env.BUTTERCMS_PREVIEW === "1"
 const butterSdk = require("buttercms");
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const butter = butterSdk(butterCmsApiKey);
+  const butter = butterSdk(butterCmsApiKey, butterCmsPreview);
 
   const landingPage = await graphql(`
     query {
@@ -37,8 +38,8 @@ exports.createPages = async ({ graphql, actions }) => {
       }
       allButterPost(
         limit: 2
-        sort: {order: ASC, fields: published}
-        filter: {status: {eq: "published"}}
+        sort: {order: DESC, fields: published}
+        filter: {status: {in: ["published" ${butterCmsPreview ? ", \"draft\"" : ""}]}}
       ) {
         nodes {
           title
@@ -54,9 +55,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogPageDataQuery = async (category, tag) => await graphql(`
     query {
       allButterPost(
-        sort: {order: ASC, fields: published}
+        sort: {order: DESC, fields: published}
         filter: {
-          status: {eq: "published"},
+          status: {in: ["published" ${butterCmsPreview ? ", \"draft\"" : ""}]},
           ${category ? `categories: {elemMatch: {slug: {eq: \"${category}\"}}},` : ""}
           ${tag ? `tags: {elemMatch: {slug: {eq: \"${tag}\"}}},` : ""}
         }
@@ -70,6 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
           summary
           body
+          meta_description
           published
           tags {
             name

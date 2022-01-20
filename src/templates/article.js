@@ -1,11 +1,10 @@
 import * as React from "react"
 import Layout from "../components/Layout"
-import Spinner from "../components/Spinner"
 import ScrollToTop from "../components/ScrollToTop"
-import NoApiTokenSection from "../components/NoApiTokenSection"
 import Header from "../containers/Header"
 import Footer from "../containers/Footer"
 import BlogWidget from "../components/BlogWidget"
+import SEO from "../components/SEO"
 import { Link } from "gatsby"
 
 const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
@@ -14,7 +13,8 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
 
   return (
     <Layout>
-      <Spinner />
+      <SEO title={article.title} description={article.meta_description} />
+
       <Header menuItems={menuItems} />
 
       <section id="blog-header" className="single-post-nav">
@@ -56,9 +56,10 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                     </li>
                   </ul>
                 </div>
-                <div className="single-post-thumbnail">
+
+                {article.featured_image && <div className="single-post-thumbnail">
                   <img src={article.featured_image} alt={article.featured_image_alt} />
-                </div>
+                </div>}
 
                 <div className="single-post-body" dangerouslySetInnerHTML={{ __html: article.body }}></div>
               </div>

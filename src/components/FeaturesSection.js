@@ -15,7 +15,7 @@ const FeaturesSection = (props) => {
 
           <div className="col-lg-7">
             <div className="row">
-              {props.fields.features.map(feature => <Feature {...feature} />)}
+              {props.fields.features.map((feature, i) => <Feature key={i} {...feature} />)}
             </div>
           </div>
         </div>

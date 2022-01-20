@@ -14,7 +14,7 @@ const TestimonialSection = (props) => {
               </div>
 
               <div className="testimonial-active">
-                {props.fields.testimonial.map(testimonial => <Testimonial {...testimonial} />)}
+                {props.fields.testimonial.map((testimonial, i) => <Testimonial key={i} {...testimonial} />)}
               </div>
 
             </div>

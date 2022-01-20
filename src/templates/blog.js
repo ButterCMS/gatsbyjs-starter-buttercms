@@ -39,7 +39,7 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
 
   return (
     <Layout>
-      <SEO title={mainEntityName || "Blog"} description={ mainEntityName ? `All posts for ${mainEntityName}` : "All ButterCMS blog posts"} />
+      <SEO title={mainEntityName || (query && `Search results for ${query}`) || "Blog"} description={ mainEntityName ? `All posts for ${mainEntityName || query}` : "All ButterCMS blog posts"} />
       <Header menuItems={menuItems} />
 
       <BlogPostsSection type={pageType} text={mainEntityName || query} />

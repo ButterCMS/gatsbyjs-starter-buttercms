@@ -3,9 +3,9 @@ import { Link } from "gatsby"
 
 const ScrollToTop = () => {
   return (
-    <Link to="#" className="scroll-top btn-hover">
+    <a to="#" className="scroll-top btn-hover">
       <i className="lni lni-chevron-up"></i>
-    </Link>
+    </a>
   )
 }
 

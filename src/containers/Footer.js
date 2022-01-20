@@ -27,7 +27,7 @@ const Footer = ({ menuItems }) => {
               <h3>About Us</h3>
               <ul className="links">
                 {menuItems.map(item =>
-                  <li><Link key={item.label} className="page-scroll" activeClassName="active" to={`/${item.url}`}>{item.label}</Link></li>
+                  <li key={item.label}><Link className="page-scroll" activeClassName="active" to={`/${item.url}`}>{item.label}</Link></li>
                 )}
               </ul>
             </div>

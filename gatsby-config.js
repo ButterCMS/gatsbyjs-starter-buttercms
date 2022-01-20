@@ -22,7 +22,7 @@ module.exports = {
         pageTypes: [`landing-page`],
         // Optional array of locales (if configured in your account)
         locales: [],
-        preview: 1, // Return draft content
+        preview: (process.env.BUTTERCMS_PREVIEW === "true" || process.env.BUTTERCMS_PREVIEW === "1") ? 1 : 0, // Return draft content
         levels: 2 // Optional. Defaults to 2. Defines the levels of relationships to serialize
       },
     },

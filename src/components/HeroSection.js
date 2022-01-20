@@ -11,7 +11,7 @@ const HeroSection = (props) => {
               <h1>{props.fields.headline}</h1>
               <p>{props.fields.subheadline}</p>
 
-              <Link to={props.fields.button_url} target="_blank" className="main-btn btn-hover">{props.fields.button_label}</Link>
+              <a to={props.fields.button_url} target="_blank" className="main-btn btn-hover">{props.fields.button_label}</a>
               <a to="https://buttercms.com/join/" target="_blank">Need an account?</a>
             </div>
           </div>

@@ -37,8 +37,8 @@ Congratulations! Your starter project is now live.
 
 Deploy your Gatsby app using Gatsby Cloud. With this guide, you'll create a copy of your starter project in your Git provider account, instantly deploy it, and institute a full content workflow connected to your ButterCMS account. Smooth.
 
-1. [Join ButterCMS](https://buttercms.com/join/)
-2. Fork the repository https://github.com/ButterCMS/gatsby-applifting
+1. If you do not have an account, [join ButterCMS](https://buttercms.com/join/)
+2. Fork this repository
 3. Sign up on [Gatsby Cloud](https://www.gatsbyjs.com/dashboard/signup/)
 4. Follow guide [Build your site with Gatsby Cloud](https://www.gatsbyjs.com/docs/tutorial/part-1/#build-your-site-with-gatsby-cloud)
 
@@ -48,7 +48,7 @@ Deploy your Gatsby app using Gatsby Cloud. With this guide, you'll create a copy
 
 Webhooks are a powerful feature that allow you to notify your internal systems whenever content in ButterCMS has changed. Your host platform needs to be notified so that Gatsby can create fresh pages from the new data.
 
-1. Go to https://www.gatsbyjs.com/dashboard
+1. Go to [Gatsby Cloud Dashboard](https://www.gatsbyjs.com/dashboard)
 2. Select your Gatsby project
 3. Go to Site Settings
 3. Copy your Preview webhook URL or Build webhook URL

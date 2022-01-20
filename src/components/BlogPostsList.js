@@ -1,5 +1,6 @@
 import * as React from "react"
 import BlogWidget from "./BlogWidget"
+import ZeroData from "./ZeroData"
 import { Link } from "gatsby"
 
 const BlogPostsList = ({ blogPosts, categories }) => {
@@ -10,6 +11,8 @@ const BlogPostsList = ({ blogPosts, categories }) => {
         <div className="row justify-content-center">
           <div className="col-12 col-lg-8 blog-roll-cards">
             <div className="row">{/* <!--nested row for blogroll--> */}
+
+              {blogPosts.length === 0 && <ZeroData />}
 
               {blogPosts.map(post => {
                 return (<div className="col-12 col-lg-6">

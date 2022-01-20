@@ -9,51 +9,12 @@ import BlogPostsList from "../components/BlogPostsList"
 import Header from "../containers/Header"
 import Footer from "../containers/Footer"
 
-// const buttercms = require("buttercms")(process.env.BUTTERCMS_API_KEY)
-
-const blogPageDataQuery = async (category, tag, query) => await graphql(`
-query {
-  allButterPost(
-    sort: {order: ASC, fields: published}
-    filter: {
-      status: {eq: "published"},
-      ${category ? `categories: {elemMatch: {slug: {eq: \"${category}\"}}},` : ""}
-      ${tag ? `tags: {elemMatch: {slug: {eq: \"${tag}\"}}},` : ""}
-    }
-  ) {
-    nodes {
-      title
-      author {
-        last_name
-        first_name
-        profile_image
-      }
-      summary
-      body
-      published
-      tags {
-        name
-        slug
-      }
-      url
-      featured_image
-      featured_image_alt
-      slug
-      categories {
-        name
-        slug
-      }
-    }
-  }
-}
-`)
-
 const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pageType, mainEntityName } }) => {
   const menuItems = menuData.data.butterCollection.value[0].menu_items
 
   const [query, setQuery] = useState("");
   const [loader, setLoader] = useState(false);
-  let [blogPosts, setBlogPosts] = useState([]);
+  let [blogPosts, setBlogPosts] = useState(pageData.data.allButterPost.nodes);
 
   useEffect(() => {
     setLoader(true);
@@ -61,23 +22,28 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
 
   useEffect(async () => {
     const urlParams = new URLSearchParams(location.search);
-    const urlQuery = urlParams.get("query");
-    // const searchedPost = await buttercms.post.search(urlQuery);
+    const urlQuery = urlParams.get("q");
+
+    if (location.pathname === '/blog/search') {
+      // FIXME: no possibility to search via GraphQL cause the API key may leak
+      const searchPosts = urlQuery ? blogPosts.filter(post => post.title.match(new RegExp(urlQuery, "mi"))) : blogPosts
+      setBlogPosts(searchPosts);
+    }
 
     setQuery(urlQuery);
-    setBlogPosts(searchedPost);
     setLoader(false);
   }, []);
 
+  if (loader) return (<Spinner />)
+
   return (
     <Layout>
-      <Spinner />
       <Header menuItems={menuItems} />
 
       {/* <NoApiTokenSection /> */}
 
-      <BlogPostsSection type={pageType} text={mainEntityName} />
-      {/* <BlogPostsList blogPosts={blogPosts} categories={categories} /> */}
+      <BlogPostsSection type={pageType} text={mainEntityName || query} />
+      <BlogPostsList blogPosts={blogPosts} categories={categories} />
 
       <ScrollToTop />
       <Footer menuItems={menuItems} />

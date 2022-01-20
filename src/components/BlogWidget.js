@@ -8,7 +8,7 @@ const BlogWidget = ({ categories }) => {
         <div class="widget search-widget">
           <h5 class="widget-title">Search This Site</h5>
           <form action={`/blog/search`} method="get">
-            <input type="text" placeholder="Search Here..." />
+            <input type="text" name="q" placeholder="Search Here..." />
             <button type="submit"><i class="lni lni-search-alt"></i></button>
           </form>
         </div>

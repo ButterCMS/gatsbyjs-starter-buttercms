@@ -1,9 +1,9 @@
-var butter = require("buttercms")(
-  process.env.BUTTERCMS_API_KEY
-);
+const butterCmsApiKey = process.env.BUTTERCMS_API_KEY
+const butterSdk = require("buttercms");
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
+  const butter = butterSdk(butterCmsApiKey);
 
   const landingPage = await graphql(`
     query {
@@ -50,9 +50,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-
-  //           ${ category && `categories: {elemMatch: {slug: {eq: "${category}"}}}` }
-
 
   const blogPageDataQuery = async (category, tag) => await graphql(`
     query {
@@ -110,14 +107,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allBlogPosts = await blogPageDataQuery()
 
-  // if (landingPage.errors) {
-  //   createPage({
-  //     path: `/`,
-  //     component: require.resolve(`./src/pages/404.js`),
-  //     context: {
-  //     },
-  //   });
-  // } else {
   createPage({
     path: `/`,
     component: require.resolve(`./src/templates/index.js`),
@@ -126,7 +115,6 @@ exports.createPages = async ({ graphql, actions }) => {
       menuData: menuItemsData
     },
   });
-  // }
 
   // blog index
   createPage({
@@ -145,7 +133,7 @@ exports.createPages = async ({ graphql, actions }) => {
     path: `/blog/search`,
     component: require.resolve(`./src/templates/blog.js`),
     context: {
-      pageData: await blogPageDataQuery(),
+      pageData: allBlogPosts,
       menuData: menuItemsData,
       categories,
       pageType: "search",

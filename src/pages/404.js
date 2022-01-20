@@ -1,5 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import Layout from "../components/Layout"
+import NoApiTokenSection from "../components/NoApiTokenSection"
 
 // styles
 const pageStyles = {
@@ -26,6 +28,14 @@ const codeStyles = {
 
 // markup
 const NotFoundPage = () => {
+  if (!process.env.BUTTERCMS_API_KEY) {
+    return (
+      <Layout>
+        <NoApiTokenSection />
+      </Layout>
+    )
+  }
+
   return (
     <main style={pageStyles}>
       <title>Not found</title>

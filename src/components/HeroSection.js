@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link } from "gatsby"
 
 const HeroSection = (props) => {
   return (
@@ -11,8 +10,8 @@ const HeroSection = (props) => {
               <h1>{props.fields.headline}</h1>
               <p>{props.fields.subheadline}</p>
 
-              <a to={props.fields.button_url} target="_blank" className="main-btn btn-hover">{props.fields.button_label}</a>
-              <a to="https://buttercms.com/join/" target="_blank">Need an account?</a>
+              <a href={props.fields.button_url} target="_blank" rel="noreferrer" className="main-btn btn-hover">{props.fields.button_label}</a>
+              <a href="https://buttercms.com/join/" target="_blank" rel="noreferrer">Need an account?</a>
             </div>
           </div>
           <div className="col-xxl-6 col-xl-6 col-lg-6">

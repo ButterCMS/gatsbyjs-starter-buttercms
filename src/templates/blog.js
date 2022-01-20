@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import Layout from "../components/Layout"
+import Layout from "../containers/Layout"
 import Spinner from "../components/Spinner"
 import BlogPostsSection from "../components/BlogPostsSection"
 import BlogPostsList from "../components/BlogPostsList"
@@ -16,7 +16,7 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
     setLoader(true);
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const urlQuery = urlParams.get("q");
 
@@ -28,7 +28,7 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
 
     setQuery(urlQuery);
     setLoader(false);
-  }, []);
+  }, [query, loader, blogPosts, location]);
 
   if (loader) return (<Spinner />)
 

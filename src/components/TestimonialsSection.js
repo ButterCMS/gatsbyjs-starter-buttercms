@@ -4,7 +4,7 @@ import {tns} from "tiny-slider"
 
 const TestimonialSection = (props) => {
 
-  useEffect(async () => {
+  useEffect(() => {
     tns({
       container: '.testimonial-active',
       autoplay: true,

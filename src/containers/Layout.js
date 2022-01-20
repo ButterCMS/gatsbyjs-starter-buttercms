@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect } from "react"
 import "../../assets/scss/main.scss"
 import { Helmet } from "react-helmet";
 import { withPrefix } from "gatsby"
-import Header from "../containers/Header"
-import Footer from "../containers/Footer"
-import ScrollToTop from "./ScrollToTop"
+import Header from "./Header"
+import Footer from "./Footer"
+import ScrollToTop from "../components/ScrollToTop"
 
 const Layout = ({ children, menuItems }) => {
-  useEffect(async () => {
+  useEffect(() => {
     const onScroll = (event) => {
       const sections = document.querySelectorAll('.page-scroll');
       const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;

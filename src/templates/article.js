@@ -1,5 +1,5 @@
 import * as React from "react"
-import Layout from "../components/Layout"
+import Layout from "../containers/Layout"
 import BlogWidget from "../components/BlogWidget"
 import SEO from "../components/SEO"
 import { Link } from "gatsby"
@@ -38,10 +38,10 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                   <h2 className="single-post-header">{article.title}</h2>
                   <ul className="single-post-meta-info">
                     <li>
-                      <a href=""><img src={article.author.profile_image} alt="#" /> {article.author.first_name} {article.author.last_name}</a>
+                      <a href="#"><img src={article.author.profile_image} alt="#" /> {article.author.first_name} {article.author.last_name}</a>
                     </li>
                     <li>
-                      <a href=""><i className="lni lni-calendar"></i> {new Date(article.published).toDateString()}
+                      <a href="#"><i className="lni lni-calendar"></i> {new Date(article.published).toDateString()}
                       </a>
                     </li>
                     <li>

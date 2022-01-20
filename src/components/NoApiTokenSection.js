@@ -9,7 +9,7 @@ const NoApiTokenSection = () => {
             <div className="hero-content">
               <h1>Configure your ButterCMS API Token</h1>
               <p>Please add your API token to <i>.env</i> file.</p>
-              <a target="_blank" to="https://buttercms.com/join/" className="main-btn btn-hover">
+              <a target="_blank" rel="noreferrer" href="https://buttercms.com/join/" className="main-btn btn-hover">
                 Get your free API token
               </a>
             </div>

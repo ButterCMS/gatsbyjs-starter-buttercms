@@ -1,9 +1,9 @@
-import React, { useEffect } from "react"
+import React from "react"
 
 const ScrollToTop = () => {
 
   return (
-    <a to="#" className="scroll-top btn-hover">
+    <a href="#" className="scroll-top btn-hover">
       <i className="lni lni-chevron-up"></i>
     </a>
   )

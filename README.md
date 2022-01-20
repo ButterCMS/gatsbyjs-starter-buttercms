@@ -19,7 +19,7 @@ e.g., "the CLI" ] (see instructions below)
 
 First, clone the repo and install the dependencies by running `npm install`
 
-```shell
+```bash
 git clone git@github.com:ButterCMS/gatsby-applifting.git` gatsby-starter-buttercms
 
 cd gatsby-starter-buttercms
@@ -48,7 +48,7 @@ Run the following command to the build the app and get it ready for running loca
 
 To view the app in the browser, you'll need to run the local development server:
 
-```shell
+```bash
 npm run develop
 ```
 

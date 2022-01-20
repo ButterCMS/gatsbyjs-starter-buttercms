@@ -6,9 +6,7 @@ sections accordingly to move people through the process as cleanly as possible.-
 
 This Gatsby starter project fully integrates with dynamic sample content from your ButterCMS account, including main menu, pages, blog posts, categories, and tags, all with a beautiful, custom theme with already-implemented search functionality. All of the included sample content is automatically created in your account dashboard when you sign up for a free trial of ButterCMS.
 
-<!-- If there is a live deployment/demo, e.g. vercel:
-Live Demo: [link]
- -->
+Live Demo: https://gatsby-applifting-gzxakni9q-prokopsimek.vercel.app/
 
 <!-- If there's a quick deployment method set up:
 Once created, this project can be easily and quickly deployed to [location] from [method,
@@ -60,7 +58,7 @@ used button based deployment if available; see specifications documents to
 links to button workflows-->
 ## 4. Deploy on [ host name ]
 
-Deploy your [framework] app using [Vercel], the creators of Next.js. With the click of a button, you'll create a copy of your starter project in your Git provider account, instantly deploy it, and institute a full content workflow connected to your ButterCMS account. Smooth.
+Deploy your Gatsby app using [Vercel], the creators of Next.js. With the click of a button, you'll create a copy of your starter project in your Git provider account, instantly deploy it, and institute a full content workflow connected to your ButterCMS account. Smooth.
 
 <!-- Here's an example of the Vercel Button. Note that the link is configured to
 allow for a smooth and easy deployment, including necessary environmental variables.

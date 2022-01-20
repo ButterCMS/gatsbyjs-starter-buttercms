@@ -1,17 +1,8 @@
 # Gatsby + ButterCMS Starter Project
 
-<!-- Brackets [] are placeholders. When readme is complete, all brackets should be
-updated with the correct value and comments deleted from the file. Please number
-sections accordingly to move people through the process as cleanly as possible.-->
-
 This Gatsby starter project fully integrates with dynamic sample content from your ButterCMS account, including main menu, pages, blog posts, categories, and tags, all with a beautiful, custom theme with already-implemented search functionality. All of the included sample content is automatically created in your account dashboard when you sign up for a free trial of ButterCMS.
 
-Live Demo: https://gatsby-applifting-gzxakni9q-prokopsimek.vercel.app/
-
-<!-- If there's a quick deployment method set up:
-Once created, this project can be easily and quickly deployed to [location] from [method,
-e.g., "the CLI" ] (see instructions below)
--->
+Live Demo: https://gatsbyappliftingmaster.gatsbyjs.io/
 
 ## 1. Installation
 
@@ -32,16 +23,6 @@ To fetch your ButterCMS content, add your API token as an environment variable.
 $ echo 'BUTTER_CMS_API_KEY=<Your API Token>' >> .env
 ```
 
-<!-- Optional build step for frameworks that require a separate build
-command, e.g., npm:
-
-### Build App
-
-Run the following command to the build the app and get it ready for running locally:
-
-[command]
--->
-
 ### 3. Run local server
 
 To view the app in the browser, you'll need to run the local development server:
@@ -52,19 +33,36 @@ npm run develop
 
 Congratulations! Your starter project is now live.
 
-<!-- Note - this example below was written with Vercel; please update instructions
-to fit whatever quick deployment host was specified. Please
-used button based deployment if available; see specifications documents to
-links to button workflows-->
-## 4. Deploy on [ host name ]
+## 4. Deploy on Gatsby Cloud
 
-Deploy your Gatsby app using [Vercel], the creators of Next.js. With the click of a button, you'll create a copy of your starter project in your Git provider account, instantly deploy it, and institute a full content workflow connected to your ButterCMS account. Smooth.
+Deploy your Gatsby app using Gatsby Cloud. With this guide, you'll create a copy of your starter project in your Git provider account, instantly deploy it, and institute a full content workflow connected to your ButterCMS account. Smooth.
 
-<!-- Here's an example of the Vercel Button. Note that the link is configured to
-allow for a smooth and easy deployment, including necessary environmental variables.
-For hosts that don't allow you to specify environmental variables in the button link,
-make sure a config file is present in the repo that feeds the names of environmental
-variables to the host.
--->
+1. [Join ButterCMS](https://buttercms.com/join/)
+2. Fork the repository https://github.com/ButterCMS/gatsby-applifting
+3. Sign up on [Gatsby Cloud](https://www.gatsbyjs.com/dashboard/signup/)
+4. Follow guide [Build your site with Gatsby Cloud](https://www.gatsbyjs.com/docs/tutorial/part-1/#build-your-site-with-gatsby-cloud)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FButterCMS%2Fnextjs-starter-buttercms&env=NEXT_PUBLIC_BUTTER_CMS_API_KEY&envDescription=Your%20ButterCMS%20API%20Token&envLink=https%3A%2F%2Fbuttercms.com%2Fsettings%2F&project-name=nextjs-starter-buttercms&repo-name=nextjs-starter-buttercms&redirect-url=https%3A%2F%2Fbuttercms.com%2Fonboarding%2Fvercel-starter-deploy-callback%2F&production-deploy-hook=Deploy%20Triggered%20from%20ButterCMS&demo-title=ButterCMS%20Next.js%20Starter&demo-description=Fully%20integrated%20with%20your%20ButterCMS%20account&demo-url=https%3A%2F%2Fnextjs-starter-buttercms.vercel.app%2F&demo-image=https://cdn.buttercms.com/r0tGK8xFRti2iRKBJ0eY&repository-name=nextjs-starter-buttercms)
+```
+⚠️ Do not forget to set your BUTTER_CMS_API_KEY environment variable in Gatsby Cloud.
+```
+
+### Configure Webhooks
+
+Webhooks are a powerful feature that allow you to notify your internal systems whenever content in ButterCMS has changed. Your host platform needs to be notified so that Gatsby can create fresh pages from the new data.
+
+1. Go to https://www.gatsbyjs.com/dashboard
+2. Select your Gatsby project
+3. Go to Site Settings
+3. Copy your Preview webhook URL or Build webhook URL
+
+![Gatsby Cloud Webhooks](./docs/gatsby-cloud-webhooks.png)
+
+5. Configure ButterCMS webhook on https://buttercms.com/webhooks/
+
+![ButterCMS Webhooks](./docs/buttercms-webhooks.png)
+
+Read more about webhooks:
+
+- [Gatsby Cloud Webhooks](./docs/gatsby-cloud-webhooks.png)
+- [Gatsbyjs.com: Sourcing from ButterCMS](https://www.gatsbyjs.com/docs/sourcing-from-buttercms/#webhooks)
+

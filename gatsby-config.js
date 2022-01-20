@@ -1,5 +1,7 @@
 require("dotenv").config()
 
+const previewMode = (process.env.BUTTER_CMS_PREVIEW === "true" || process.env.BUTTER_CMS_PREVIEW === "1") ? 1 : 0
+
 module.exports = {
   siteMetadata: {
     title: `ButterCMS Gatsby.js`,
@@ -14,13 +16,13 @@ module.exports = {
         contentFields: {
           keys: [`navigation_menu`],
           // Optional. Set to 1 to enable test mode for viewing draft content.
-          test: 0,
+          test: previewMode,
         },
         // Optional array of page type keys
         pageTypes: [`landing-page`],
         // Optional array of locales (if configured in your account)
         locales: [],
-        preview: (process.env.BUTTER_CMS_PREVIEW === "true" || process.env.BUTTER_CMS_PREVIEW === "1") ? 1 : 0, // Return draft content
+        preview: previewMode, // Return draft content
         levels: 2 // Optional. Defaults to 2. Defines the levels of relationships to serialize
       },
     },

@@ -1,7 +1,28 @@
-import * as React from "react"
+import React, { useEffect } from "react"
 import Testimonial from "./Testimonial"
+import {tns} from "tiny-slider"
 
 const TestimonialSection = (props) => {
+
+  useEffect(async () => {
+    tns({
+      container: '.testimonial-active',
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplayButtonOutput: false,
+      mouseDrag: true,
+      gutter: 0,
+      nav: false,
+      navPosition: "bottom",
+      controls: true,
+      controlsText: [
+          '<i class="lni lni-chevron-left"></i>',
+          '<i class="lni lni-chevron-right"></i>',
+      ],
+      items: 1,
+    });
+  }, []);
+
   return (
     <section id={props.fields.scroll_anchor_id} className="testimonial-section mt-100">
       <div className="container">

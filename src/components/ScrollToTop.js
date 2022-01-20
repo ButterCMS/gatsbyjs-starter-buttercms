@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import React, { useEffect } from "react"
 
 const ScrollToTop = () => {
+
   return (
     <a to="#" className="scroll-top btn-hover">
       <i className="lni lni-chevron-up"></i>

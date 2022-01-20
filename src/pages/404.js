@@ -28,7 +28,7 @@ const codeStyles = {
 
 // markup
 const NotFoundPage = () => {
-  if (!process.env.BUTTERCMS_API_KEY) {
+  if (!process.env.BUTTER_CMS_API_KEY) {
     return (
       <Layout>
         <NoApiTokenSection />

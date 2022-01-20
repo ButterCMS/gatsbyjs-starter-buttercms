@@ -1,54 +1,72 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Gatsby + ButterCMS Starter Project
 
-## 🚀 Quick start
+<!-- Brackets [] are placeholders. When readme is complete, all brackets should be
+updated with the correct value and comments deleted from the file. Please number
+sections accordingly to move people through the process as cleanly as possible.-->
 
-1.  **Create a Gatsby site.**
+This Gatsby starter project fully integrates with dynamic sample content from your ButterCMS account, including main menu, pages, blog posts, categories, and tags, all with a beautiful, custom theme with already-implemented search functionality. All of the included sample content is automatically created in your account dashboard when you sign up for a free trial of ButterCMS.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+<!-- If there is a live deployment/demo, e.g. vercel:
+Live Demo: [link]
+ -->
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+<!-- If there's a quick deployment method set up:
+Once created, this project can be easily and quickly deployed to [location] from [method,
+e.g., "the CLI" ] (see instructions below)
+-->
 
-2.  **Start developing.**
+## 1. Installation
 
-    Navigate into your new site’s directory and start it up.
+First, clone the repo and install the dependencies by running `npm install`
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+```shell
+git clone git@github.com:ButterCMS/gatsby-applifting.git` gatsby-starter-buttercms
 
-3.  **Open the code and start customizing!**
+cd gatsby-starter-buttercms
+npm install
+```
 
-    Your site is now running at http://localhost:8000!
+### 2. Set API Token
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+To fetch your ButterCMS content, add your API token as an environment variable.
 
-4.  **Learn more**
+```bash
+$ echo 'BUTTER_CMS_API_KEY=<Your API Token>' >> .env
+```
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+<!-- Optional build step for frameworks that require a separate build
+command, e.g., npm:
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+### Build App
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Run the following command to the build the app and get it ready for running locally:
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+[command]
+-->
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+### 3. Run local server
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+To view the app in the browser, you'll need to run the local development server:
 
-## 🚀 Quick start (Gatsby Cloud)
+```shell
+npm run develop
+```
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+Congratulations! Your starter project is now live.
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+<!-- Note - this example below was written with Vercel; please update instructions
+to fit whatever quick deployment host was specified. Please
+used button based deployment if available; see specifications documents to
+links to button workflows-->
+## 4. Deploy on [ host name ]
+
+Deploy your [framework] app using [Vercel], the creators of Next.js. With the click of a button, you'll create a copy of your starter project in your Git provider account, instantly deploy it, and institute a full content workflow connected to your ButterCMS account. Smooth.
+
+<!-- Here's an example of the Vercel Button. Note that the link is configured to
+allow for a smooth and easy deployment, including necessary environmental variables.
+For hosts that don't allow you to specify environmental variables in the button link,
+make sure a config file is present in the repo that feeds the names of environmental
+variables to the host.
+-->
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FButterCMS%2Fnextjs-starter-buttercms&env=NEXT_PUBLIC_BUTTER_CMS_API_KEY&envDescription=Your%20ButterCMS%20API%20Token&envLink=https%3A%2F%2Fbuttercms.com%2Fsettings%2F&project-name=nextjs-starter-buttercms&repo-name=nextjs-starter-buttercms&redirect-url=https%3A%2F%2Fbuttercms.com%2Fonboarding%2Fvercel-starter-deploy-callback%2F&production-deploy-hook=Deploy%20Triggered%20from%20ButterCMS&demo-title=ButterCMS%20Next.js%20Starter&demo-description=Fully%20integrated%20with%20your%20ButterCMS%20account&demo-url=https%3A%2F%2Fnextjs-starter-buttercms.vercel.app%2F&demo-image=https://cdn.buttercms.com/r0tGK8xFRti2iRKBJ0eY&repository-name=nextjs-starter-buttercms)

@@ -1,5 +1,5 @@
-const butterCmsApiKey = process.env.BUTTERCMS_API_KEY
-const butterCmsPreview = process.env.BUTTERCMS_PREVIEW === "true" || process.env.BUTTERCMS_PREVIEW === "1"
+const butterCmsApiKey = process.env.BUTTER_CMS_API_KEY
+const butterCmsPreview = process.env.BUTTER_CMS_PREVIEW === "true" || process.env.BUTTER_CMS_PREVIEW === "1"
 const butterSdk = require("buttercms");
 
 exports.createPages = async ({ graphql, actions }) => {

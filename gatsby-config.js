@@ -1,6 +1,4 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
@@ -11,7 +9,7 @@ module.exports = {
     {
       resolve: `gatsby-source-buttercms`,
       options: {
-        authToken: process.env.BUTTERCMS_API_KEY,
+        authToken: process.env.BUTTER_CMS_API_KEY,
         // Optional array of Collection key
         contentFields: {
           keys: [`navigation_menu`],
@@ -22,7 +20,7 @@ module.exports = {
         pageTypes: [`landing-page`],
         // Optional array of locales (if configured in your account)
         locales: [],
-        preview: (process.env.BUTTERCMS_PREVIEW === "true" || process.env.BUTTERCMS_PREVIEW === "1") ? 1 : 0, // Return draft content
+        preview: (process.env.BUTTER_CMS_PREVIEW === "true" || process.env.BUTTER_CMS_PREVIEW === "1") ? 1 : 0, // Return draft content
         levels: 2 // Optional. Defaults to 2. Defines the levels of relationships to serialize
       },
     },

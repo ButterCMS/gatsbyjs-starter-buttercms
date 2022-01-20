@@ -20,7 +20,7 @@ e.g., "the CLI" ] (see instructions below)
 First, clone the repo and install the dependencies by running `npm install`
 
 ```bash
-git clone git@github.com:ButterCMS/gatsby-applifting.git` gatsby-starter-buttercms
+git clone git@github.com:ButterCMS/gatsby-applifting.git gatsby-starter-buttercms
 
 cd gatsby-starter-buttercms
 npm install

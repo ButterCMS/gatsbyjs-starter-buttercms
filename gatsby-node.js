@@ -2,9 +2,22 @@ const butterCmsApiKey = process.env.BUTTER_CMS_API_KEY
 const butterCmsPreview = process.env.BUTTER_CMS_PREVIEW === "true" || process.env.BUTTER_CMS_PREVIEW === "1"
 const butterSdk = require("buttercms");
 
+exports.onPreBootstrap = async () => {
+  const butter = butterSdk(butterCmsApiKey, butterCmsPreview);
+  try {
+    await butter.category.list()
+  } catch (e) {
+    if (butterCmsApiKey) throw new Error("Your Butter token is set to an invalid value. Please verify your token is correct.")
+  }
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const butter = butterSdk(butterCmsApiKey, butterCmsPreview);
+
+  // FIXME: no possibility to query categories and tags via GraphQL
+  let categories = (await butter.category.list()).data.data;
+  let tags = (await butter.tag.list()).data.data;
 
   const landingPage = await graphql(`
     query {
@@ -102,10 +115,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-
-  // FIXME: no possibility to query categories and tags via GraphQL
-  let categories = (await butter.category.list()).data.data;
-  let tags = (await butter.tag.list()).data.data;
 
   const allBlogPosts = await blogPageDataQuery()
 

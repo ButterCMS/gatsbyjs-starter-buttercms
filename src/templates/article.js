@@ -1,8 +1,5 @@
 import * as React from "react"
 import Layout from "../components/Layout"
-import ScrollToTop from "../components/ScrollToTop"
-import Header from "../containers/Header"
-import Footer from "../containers/Footer"
 import BlogWidget from "../components/BlogWidget"
 import SEO from "../components/SEO"
 import { Link } from "gatsby"
@@ -12,10 +9,8 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
   const menuItems = menuData.data.butterCollection.value[0].menu_items
 
   return (
-    <Layout>
+    <Layout menuItems={menuItems}>
       <SEO title={article.title} description={article.meta_description} />
-
-      <Header menuItems={menuItems} />
 
       <section id="blog-header" className="single-post-nav">
         <div className="container">
@@ -24,8 +19,8 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
               <div className="section-title text-center">
                 <h2>{article.title}</h2>
                 <ul className="breadcrumb-nav">
-                  <li><Link href="/">Home</Link></li>
-                  <li><Link href="/blog">Blog</Link></li>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/blog">Blog</Link></li>
                   <li>{article.title}</li>
                 </ul>
               </div>
@@ -43,15 +38,15 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                   <h2 className="single-post-header">{article.title}</h2>
                   <ul className="single-post-meta-info">
                     <li>
-                      <a href="javascript:void(0)"><img src={article.author.profile_image} alt="#" /> {article.author.first_name} {article.author.last_name}</a>
+                      <a href=""><img src={article.author.profile_image} alt="#" /> {article.author.first_name} {article.author.last_name}</a>
                     </li>
                     <li>
-                      <a href="javascript:void(0)"><i className="lni lni-calendar"></i> {new Date(article.published).toDateString()}
+                      <a href=""><i className="lni lni-calendar"></i> {new Date(article.published).toDateString()}
                       </a>
                     </li>
                     <li>
-                      {article.tags.map(tag => {
-                        return <Link href={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</Link>
+                      {article.tags.map((tag, i) => {
+                        return <Link key={i} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</Link>
                       })}
                     </li>
                   </ul>
@@ -72,19 +67,6 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
           </div>
         </div>
       </section>
-
-      <ScrollToTop />
-      <Footer menuItems={menuItems} />
-
-      {/* <!-- =================== JS All Templates ========================= --> */}
-      {/* <script src="js/bootstrap.min.js"></script>
-    <script src="js/polyfill.js"></script>
-    <script src="js/main.js"></script> */}
-
-      {/* <!-- ================= JS Index HTML only ========================= --> */}
-      {/* <script src="js/tiny-slider.js"></script>
-    <script src="js/client-slider.js"></script>
-    <script src="js/section-menu.js"></script> */}
     </Layout>
   )
 }

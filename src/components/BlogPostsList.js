@@ -14,21 +14,21 @@ const BlogPostsList = ({ blogPosts, categories }) => {
 
               {blogPosts.length === 0 && <ZeroData />}
 
-              {blogPosts.map(post => {
-                return (<div className="col-12 col-lg-6">
+              {blogPosts.map((post, i) => {
+                return (<div key={i} className="col-12 col-lg-6">
                   <div className="blog-roll-card">
                     <div className="blog-roll-card-meta">
                       <h2 className="blog-roll-card-header"><Link to={`/blog/${post.slug}`}>{post.title}</Link></h2>
                       <ul className="blog-roll-card-meta-info">
                         <li>
-                          <a href="javascript:void(0)"><img src={post.author.profile_image} alt="#" />{post.author.first_name} {post.author.last_name}</a>
+                          <a href=""><img src={post.author.profile_image} alt="#" />{post.author.first_name} {post.author.last_name}</a>
                         </li>
                         <li>
-                          <a href="javascript:void(0)"><i className="lni lni-calendar"></i> {new Date(post.published).toDateString()}</a>
+                          <a href=""><i className="lni lni-calendar"></i> {new Date(post.published).toDateString()}</a>
                         </li>
                         <li>
-                          {post.tags.map(tag => {
-                            return <Link to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</Link>
+                          {post.tags.map((tag, ii) => {
+                            return <Link key={ii} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</Link>
                           })}
                         </li>
                       </ul>

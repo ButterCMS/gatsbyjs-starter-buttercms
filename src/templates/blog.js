@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Spinner from "../components/Spinner"
-import ScrollToTop from "../components/ScrollToTop"
-import NoApiTokenSection from "../components/NoApiTokenSection"
 import BlogPostsSection from "../components/BlogPostsSection"
 import BlogPostsList from "../components/BlogPostsList"
 import SEO from "../components/SEO"
-import Header from "../containers/Header"
-import Footer from "../containers/Footer"
 
 const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pageType, mainEntityName } }) => {
   const menuItems = menuData.data.butterCollection.value[0].menu_items
@@ -38,15 +33,11 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
   if (loader) return (<Spinner />)
 
   return (
-    <Layout>
+    <Layout menuItems={menuItems}>
       <SEO title={mainEntityName || (query && `Search results for ${query}`) || "Blog"} description={ mainEntityName ? `All posts for ${mainEntityName || query}` : "All ButterCMS blog posts"} />
-      <Header menuItems={menuItems} />
 
       <BlogPostsSection type={pageType} text={mainEntityName || query} />
       <BlogPostsList blogPosts={blogPosts} categories={categories} />
-
-      <ScrollToTop />
-      <Footer menuItems={menuItems} />
     </Layout>
   )
 }

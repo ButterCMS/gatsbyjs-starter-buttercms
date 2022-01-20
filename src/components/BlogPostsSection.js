@@ -3,17 +3,17 @@ import { Link } from "gatsby"
 
 const BlogPostsSection = ({ type, text }) => {
   return (
-    <section id="blog-roll" class="blog-roll-nav">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12">
+    <section id="blog-roll" className="blog-roll-nav">
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12">
             {(() => {
               switch (type) {
                 case "blog":
                   return (
-                    <div class="section-title text-center">
+                    <div className="section-title text-center">
                       <h2>All Blog Posts</h2>
-                      <ul class="breadcrumb-nav">
+                      <ul className="breadcrumb-nav">
                         <li><Link to="/">Home</Link></li>
                         <li>All blog posts</li>
                       </ul>
@@ -21,9 +21,9 @@ const BlogPostsSection = ({ type, text }) => {
                   )
                 case "category":
                   return (
-                    <div class="section-title text-center">
+                    <div className="section-title text-center">
                       <h2>Blog Posts by Category</h2>
-                      <ul class="breadcrumb-nav">
+                      <ul className="breadcrumb-nav">
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/blog">Blog</Link></li>
                         <li>Category: {text}</li>
@@ -32,9 +32,9 @@ const BlogPostsSection = ({ type, text }) => {
                   )
                 case "tag":
                   return (
-                    <div class="section-title text-center">
+                    <div className="section-title text-center">
                       <h2>Blog Posts by Tag</h2>
-                      <ul class="breadcrumb-nav">
+                      <ul className="breadcrumb-nav">
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/blog">Blog</Link></li>
                         <li>Tag: {text}</li>
@@ -43,9 +43,9 @@ const BlogPostsSection = ({ type, text }) => {
                   )
                 case "search":
                   return (
-                    <div class="section-title text-center">
+                    <div className="section-title text-center">
                       <h2>Search Results</h2>
-                      <ul class="breadcrumb-nav">
+                      <ul className="breadcrumb-nav">
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/blog">Blog</Link></li>
                         <li>Search: {text}</li>

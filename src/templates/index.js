@@ -1,15 +1,10 @@
-import * as React from "react"
+import React from "react"
 import Layout from "../components/Layout"
 import FeaturesSection from "../components/FeaturesSection"
 import HeroSection from "../components/HeroSection"
 import TestimonialsSection from "../components/TestimonialsSection"
 import BlogSection from "../components/BlogSection"
-import Spinner from "../components/Spinner"
-import ScrollToTop from "../components/ScrollToTop"
-import NoApiTokenSection from "../components/NoApiTokenSection"
 import TwoColumnWithImageSection from "../components/TwoColumnWithImageSection"
-import Header from "../containers/Header"
-import Footer from "../containers/Footer"
 import SEO from "../components/SEO";
 
 const IndexPage = ({ pageContext: { pageData, menuData } }) => {
@@ -18,11 +13,8 @@ const IndexPage = ({ pageContext: { pageData, menuData } }) => {
   const menuItems = menuData.data.butterCollection.value[0].menu_items
 
   return (
-    <Layout>
+    <Layout menuItems={menuItems}>
       <SEO { ...pageData.data.butterPage.seo } />
-
-      <Spinner />
-      <Header menuItems={menuItems} />
 
       {bodyElements.map((bodyElement, i) => {
         switch (bodyElement.type) {
@@ -40,20 +32,6 @@ const IndexPage = ({ pageContext: { pageData, menuData } }) => {
       })}
 
       <BlogSection blogPosts={blogPosts} />
-
-      <ScrollToTop />
-
-      <Footer menuItems={menuItems} />
-
-      {/* <!-- =================== JS All Templates ========================= --> */}
-      {/* <script src="js/bootstrap.min.js"></script>
-      <script src="js/polyfill.js"></script>
-      <script src="js/main.js"></script> */}
-
-      {/* <!-- ================= JS Index HTML only ========================= --> */}
-      {/* <script src="js/tiny-slider.js"></script>
-      <script src="js/client-slider.js"></script>
-      <script src="js/section-menu.js"></script> */}
     </Layout>
   )
 }

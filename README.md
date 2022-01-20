@@ -42,9 +42,7 @@ Deploy your Gatsby app using Gatsby Cloud. With this guide, you'll create a copy
 3. Sign up on [Gatsby Cloud](https://www.gatsbyjs.com/dashboard/signup/)
 4. Follow guide [Build your site with Gatsby Cloud](https://www.gatsbyjs.com/docs/tutorial/part-1/#build-your-site-with-gatsby-cloud)
 
-```
-⚠️ Do not forget to set your BUTTER_CMS_API_KEY environment variable in Gatsby Cloud.
-```
+⚠️ **Don't forget to set the BUTTER_CMS_API_KEY environment variable in Gatsby Cloud.**
 
 ### Configure Webhooks
 

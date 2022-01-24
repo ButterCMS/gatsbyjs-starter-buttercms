@@ -38,7 +38,7 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                   <h2 className="single-post-header">{article.title}</h2>
                   <ul className="single-post-meta-info">
                     <li>
-                      <a href="#"><img src={article.author.profile_image} alt="#" /> {article.author.first_name} {article.author.last_name}</a>
+                      <a href="#">{article.author.profile_image && <img src={article.author.profile_image} alt="#" />} {article.author.first_name} {article.author.last_name}</a>
                     </li>
                     <li>
                       <a href="#"><i className="lni lni-calendar"></i> {new Date(article.published).toDateString()}

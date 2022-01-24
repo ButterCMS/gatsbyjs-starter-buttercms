@@ -21,7 +21,7 @@ const BlogPostsList = ({ blogPosts, categories }) => {
                       <h2 className="blog-roll-card-header"><Link to={`/blog/${post.slug}`}>{post.title}</Link></h2>
                       <ul className="blog-roll-card-meta-info">
                         <li>
-                          <a href="#"><img src={post.author.profile_image} alt="#" />{post.author.first_name} {post.author.last_name}</a>
+                          <a href="#">{post.author.profile_image && (<img src={post.author.profile_image} alt="#" />)}{post.author.first_name} {post.author.last_name}</a>
                         </li>
                         <li>
                           <a href="#"><i className="lni lni-calendar"></i> {new Date(post.published).toDateString()}</a>

@@ -20,9 +20,9 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
     const urlParams = new URLSearchParams(location.search);
     const urlQuery = urlParams.get("q");
 
-    if (location.pathname === '/blog/search') {
+    if (location.pathname === '/blog/search/') {
       // FIXME: no possibility to search via GraphQL cause the API key may leak
-      const searchPosts = urlQuery ? blogPosts.filter(post => post.title.match(new RegExp(urlQuery, "mi"))) : blogPosts
+      const searchPosts = urlQuery ? blogPosts.filter(post => post.title.match(new RegExp(urlQuery, "mi")) || post.body.match(new RegExp(urlQuery, "mi"))) : blogPosts
       setBlogPosts(searchPosts);
     }
 

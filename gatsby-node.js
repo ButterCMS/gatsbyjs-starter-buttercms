@@ -85,7 +85,7 @@ exports.createPages = async ({ graphql, actions }) => {
           summary
           body
           meta_description
-          published
+          published(formatString: "ddd DD MMM YYYY")
           tags {
             name
             slug

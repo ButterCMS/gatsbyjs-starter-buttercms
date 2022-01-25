@@ -24,7 +24,7 @@ const BlogPostsList = ({ blogPosts, categories }) => {
                           <a href="#">{post.author.profile_image && (<img src={post.author.profile_image} alt="#" />)}{post.author.first_name} {post.author.last_name}</a>
                         </li>
                         <li>
-                          <a href="#"><i className="lni lni-calendar"></i> {new Date(post.published).toDateString()}</a>
+                          <a href="#"><i className="lni lni-calendar"></i> {post.published}</a>
                         </li>
                         <li>
                           {post.tags.map(tag => {

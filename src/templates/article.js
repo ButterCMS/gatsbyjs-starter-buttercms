@@ -41,7 +41,7 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                       <a href="#">{article.author.profile_image && <img src={article.author.profile_image} alt="#" />} {article.author.first_name} {article.author.last_name}</a>
                     </li>
                     <li>
-                      <a href="#"><i className="lni lni-calendar"></i> {new Date(article.published).toDateString()}
+                      <a href="#"><i className="lni lni-calendar"></i> {article.published}
                       </a>
                     </li>
                     <li>

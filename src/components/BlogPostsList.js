@@ -14,8 +14,8 @@ const BlogPostsList = ({ blogPosts, categories }) => {
 
               {blogPosts.length === 0 && <ZeroData />}
 
-              {blogPosts.map((post, i) => {
-                return (<div key={i} className="col-12 col-lg-6">
+              {blogPosts.map(post => {
+                return (<div key={post.slug} className="col-12 col-lg-6">
                   <div className="blog-roll-card">
                     <div className="blog-roll-card-meta">
                       <h2 className="blog-roll-card-header"><Link to={`/blog/${post.slug}`}>{post.title}</Link></h2>
@@ -27,8 +27,8 @@ const BlogPostsList = ({ blogPosts, categories }) => {
                           <a href="#"><i className="lni lni-calendar"></i> {new Date(post.published).toDateString()}</a>
                         </li>
                         <li>
-                          {post.tags.map((tag, ii) => {
-                            return <Link key={ii} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</Link>
+                          {post.tags.map(tag => {
+                            return <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</Link>
                           })}
                         </li>
                       </ul>
@@ -38,7 +38,7 @@ const BlogPostsList = ({ blogPosts, categories }) => {
                     </div>
                     }
                     <div className="blog-roll-card-body">
-                      <p dangerouslySetInnerHTML={{ __html: post.summary }}></p>
+                      <p>{post.summary}</p>
                     </div>
                     <div className="blog-roll-card-footer text-center">
                       <Link to={`/blog/${post.slug}`} className="main-btn btn-hover">Read More</Link>

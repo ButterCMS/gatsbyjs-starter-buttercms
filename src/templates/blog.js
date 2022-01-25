@@ -9,16 +9,12 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
   const menuItems = menuData.data.butterCollection.value[0].menu_items
 
   const [query, setQuery] = useState("");
-  const [loader, setLoader] = useState(false);
-  let [blogPosts, setBlogPosts] = useState(pageData.data.allButterPost.nodes);
-
-  useEffect(() => {
-    setLoader(true);
-  }, []);
+  const [loader, setLoader] = useState(true);
+  const [blogPosts, setBlogPosts] = useState(pageData.data.allButterPost.nodes);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    const urlQuery = urlParams.get("q");
+    const urlQuery = urlParams.get("query");
 
     if (location.pathname === '/blog/search/') {
       // FIXME: no possibility to search via GraphQL cause the API key may leak
@@ -28,7 +24,7 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
 
     setQuery(urlQuery);
     setLoader(false);
-  }, [query, loader, blogPosts, location]);
+  }, []);
 
   if (loader) return (<Spinner />)
 

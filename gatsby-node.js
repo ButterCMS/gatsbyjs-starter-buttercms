@@ -1,5 +1,5 @@
 const butterCmsApiKey = process.env.BUTTER_CMS_API_KEY
-const butterCmsPreview = process.env.BUTTER_CMS_PREVIEW === "true" || process.env.BUTTER_CMS_PREVIEW === "1"
+const butterCmsPreview = !(process.env.BUTTER_CMS_PREVIEW === "false" || process.env.BUTTER_CMS_PREVIEW === "0")
 const butterSdk = require("buttercms");
 
 exports.onPreBootstrap = async () => {

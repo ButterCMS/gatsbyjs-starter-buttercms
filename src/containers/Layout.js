@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react"
 import "../../assets/scss/main.scss"
-import { Helmet } from "react-helmet";
-import { withPrefix } from "gatsby"
 import Header from "./Header"
 import Footer from "./Footer"
 import ScrollToTop from "../containers/ScrollToTop"

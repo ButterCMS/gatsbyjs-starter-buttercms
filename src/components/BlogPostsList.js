@@ -1,7 +1,7 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import BlogWidget from "./BlogWidget"
 import ZeroData from "./ZeroData"
-import { Link } from "gatsby"
 
 const BlogPostsList = ({ blogPosts, categories }) => {
 

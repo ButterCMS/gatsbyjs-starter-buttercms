@@ -1,8 +1,8 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import Layout from "../containers/Layout"
 import BlogWidget from "../components/BlogWidget"
 import SEO from "../components/SEO"
-import { Link } from "gatsby"
 
 const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
   const article = pageData

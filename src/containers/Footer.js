@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-const Footer = ({ menuItems }) => {
+const Footer = ({ menuItems, activeLink }) => {
   return (
     <footer className="footer pt-120">
       <div className="container">
@@ -27,7 +27,7 @@ const Footer = ({ menuItems }) => {
               <h3>About Us</h3>
               <ul className="links">
                 {menuItems.map(item =>
-                  <li key={item.label}><Link className="page-scroll" activeClassName="active" to={`/${item.url}`}>{item.label}</Link></li>
+                  <li key={item.label}><Link className={`page-scroll ${activeLink === `/${item.url}` ? "active" : ""}`} to={`/${item.url}`}>{item.label}</Link></li>
                 )}
               </ul>
             </div>

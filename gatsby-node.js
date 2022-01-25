@@ -11,6 +11,21 @@ exports.onPreBootstrap = async () => {
   }
 }
 
+exports.onCreatePage = ({ page, actions }) => {
+  const { deletePage, createPage } = actions
+
+  if (page.path === '/dev-404-page/') {
+    deletePage(page)
+  } else if (page.path === '/404/') {
+    deletePage(page)
+    if (!butterCmsApiKey) {
+      createPage({ ...page, component: require.resolve(`./src/templates/noApiKey.js`)})
+    } else {
+      createPage(page)
+    }
+  }
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const butter = butterSdk(butterCmsApiKey, butterCmsPreview);

@@ -28,14 +28,6 @@ const codeStyles = {
 
 // markup
 const NotFoundPage = () => {
-  if (!process.env.BUTTER_CMS_API_KEY) {
-    return (
-      <Layout menuItems={[]}>
-        <NoApiTokenSection />
-      </Layout>
-    )
-  }
-
   console.error("Your Butter token is set to an invalid value. Please verify your token is correct.")
 
   return (

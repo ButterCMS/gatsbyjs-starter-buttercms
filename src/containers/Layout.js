@@ -35,10 +35,6 @@ const Layout = ({ children, menuItems }) => {
 
   return (
     <>
-      <Helmet>
-        <script type="text/javascript" src={withPrefix("js/main.js")} />
-      </Helmet>
-
       <Header menuItems={menuItems} activeLink={activeLink} />
 
       {children}

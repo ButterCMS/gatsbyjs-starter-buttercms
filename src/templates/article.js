@@ -10,7 +10,7 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
 
   return (
     <Layout menuItems={menuItems}>
-      <SEO title={article.title} description={article.meta_description} />
+      <SEO title={article.title} description={article.meta_description} image={article.featured_image} />
 
       <section id="blog-header" className="single-post-nav">
         <div className="container">

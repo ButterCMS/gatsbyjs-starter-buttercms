@@ -19,7 +19,7 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
     const locRegex = new RegExp(/\/blog\/search/, "mi")
     if (location.pathname.match(locRegex)) {
       const filterRegex = new RegExp(urlQuery, "mi")
-      const searchPosts = urlQuery ? blogPosts.filter(post => post.title.match(filterRegex) || post.body.match(filterRegex)) : blogPosts
+      const searchPosts = urlQuery ? blogPosts.filter(post => post.title.match(filterRegex) || post.body.match(filterRegex) || post.summary.match(filterRegex)) : blogPosts
       setBlogPosts(searchPosts);
     }
 

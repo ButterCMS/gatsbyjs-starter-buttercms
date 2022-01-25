@@ -1,6 +1,6 @@
 require("dotenv").config()
 
-const previewMode = (process.env.BUTTER_CMS_PREVIEW === "true" || process.env.BUTTER_CMS_PREVIEW === "1") ? 1 : 0
+const previewMode = !(process.env.BUTTER_CMS_PREVIEW === "false" || process.env.BUTTER_CMS_PREVIEW === "0") ? 1 : 0
 
 module.exports = {
   siteMetadata: {

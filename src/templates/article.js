@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import Layout from "../containers/Layout"
 import BlogWidget from "../components/BlogWidget"
 import SEO from "../components/SEO"
+import placeholder from "../../assets/images/placeholder.png"
 
 const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
   const article = pageData
@@ -38,7 +39,7 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                   <h2 className="single-post-header">{article.title}</h2>
                   <ul className="single-post-meta-info">
                     <li>
-                      <a href="#">{article.author.profile_image && <img src={article.author.profile_image} alt="#" />} {article.author.first_name} {article.author.last_name}</a>
+                      <a href="#"><img src={article.author.profile_image ? article.author.profile_image : placeholder} alt="#" /> {article.author.first_name} {article.author.last_name}</a>
                     </li>
                     <li>
                       <a href="#"><i className="lni lni-calendar"></i> {article.published}

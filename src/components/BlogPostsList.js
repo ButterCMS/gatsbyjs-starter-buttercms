@@ -2,6 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import BlogWidget from "./BlogWidget"
 import ZeroData from "./ZeroData"
+import placeholder from "../../assets/images/placeholder.png"
 
 const BlogPostsList = ({ blogPosts, categories }) => {
 
@@ -21,7 +22,7 @@ const BlogPostsList = ({ blogPosts, categories }) => {
                       <h2 className="blog-roll-card-header"><Link to={`/blog/${post.slug}`}>{post.title}</Link></h2>
                       <ul className="blog-roll-card-meta-info">
                         <li>
-                          <a href="#">{post.author.profile_image && (<img src={post.author.profile_image} alt="#" />)}{post.author.first_name} {post.author.last_name}</a>
+                          <a href="#"><img src={post.author.profile_image ? post.author.profile_image : placeholder} alt="#" />{post.author.first_name} {post.author.last_name}</a>
                         </li>
                         <li>
                           <a href="#"><i className="lni lni-calendar"></i> {post.published}</a>

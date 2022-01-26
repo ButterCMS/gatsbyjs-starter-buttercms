@@ -7,14 +7,13 @@ import BlogSection from "../components/BlogSection"
 import TwoColumnWithImageSection from "../components/TwoColumnWithImageSection"
 import SEO from "../components/SEO";
 
-const IndexPage = ({ pageContext: { pageData, menuData } }) => {
-  const bodyElements = pageData.data.butterPage.body
-  const blogPosts = pageData.data.allButterPost.nodes
+const IndexPage = ({ pageContext: { pageData, menuData, blogPosts } }) => {
+  const bodyElements = pageData.body
   const menuItems = menuData.data.butterCollection.value[0].menu_items
 
   return (
     <Layout menuItems={menuItems}>
-      <SEO { ...pageData.data.butterPage.seo } />
+      <SEO { ...pageData.seo } />
 
       {bodyElements.map((bodyElement, i) => {
         switch (bodyElement.type) {

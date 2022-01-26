@@ -64,6 +64,38 @@ exports.createPages = async ({ graphql, actions }) => {
           type
         }
       }
+      allButterPage {
+        nodes {
+          slug
+          page_type
+          seo {
+            title
+            description
+          }
+          body {
+            fields {
+              headline
+              subheadline
+              scroll_anchor_id
+              button_label
+              button_url
+              image
+              image_position
+              testimonial {
+                name
+                quote
+                title
+              }
+              features {
+                description
+                headline
+                icon
+              }
+            }
+            type
+          }
+        }
+      }
       allButterPost(
         limit: 2
         sort: {order: DESC, fields: published}
@@ -133,14 +165,32 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allBlogPosts = await blogPageDataQuery()
 
+  // index
   createPage({
     path: `/`,
     component: require.resolve(`./src/templates/index.js`),
     context: {
-      pageData: landingPage,
+      pageData: landingPage.data.butterPage,
+      blogPosts: landingPage.data.allButterPost.nodes,
       menuData: menuItemsData
     },
   });
+
+  // all pages for preview mode
+  const allPages = landingPage.data.allButterPage.nodes
+  allPages.map(page => {
+    if (page.page_type !== "*") {
+      return createPage({
+        path: `${page.page_type}/${page.slug}`,
+        component: require.resolve(`./src/templates/index.js`),
+        context: {
+          pageData: page,
+          blogPosts: landingPage.data.allButterPost.nodes,
+          menuData: menuItemsData
+        },
+      });
+    }
+  })
 
   // blog index
   createPage({

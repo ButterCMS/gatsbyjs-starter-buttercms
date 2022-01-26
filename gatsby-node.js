@@ -99,7 +99,6 @@ exports.createPages = async ({ graphql, actions }) => {
       allButterPost(
         limit: 2
         sort: {order: DESC, fields: published}
-        filter: {status: {in: ["published" ${butterCmsPreview ? ", \"draft\"" : ""}]}}
       ) {
         nodes {
           title
@@ -117,7 +116,6 @@ exports.createPages = async ({ graphql, actions }) => {
       allButterPost(
         sort: {order: DESC, fields: published}
         filter: {
-          status: {in: ["published" ${butterCmsPreview ? ", \"draft\"" : ""}]},
           ${category ? `categories: {elemMatch: {slug: {eq: \"${category}\"}}},` : ""}
           ${tag ? `tags: {elemMatch: {slug: {eq: \"${tag}\"}}},` : ""}
         }

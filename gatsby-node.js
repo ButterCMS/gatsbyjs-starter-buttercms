@@ -67,6 +67,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allButterPage {
         nodes {
           slug
+          page_type
           seo {
             title
             description
@@ -179,7 +180,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const allPages = landingPage.data.allButterPage.nodes
   allPages.map(page => {
     createPage({
-      path: page.slug,
+      path: `${page.page_type}/${page.slug}`,
       component: require.resolve(`./src/templates/index.js`),
       context: {
         pageData: page,

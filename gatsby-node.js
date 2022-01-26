@@ -179,15 +179,17 @@ exports.createPages = async ({ graphql, actions }) => {
   // all pages for preview mode
   const allPages = landingPage.data.allButterPage.nodes
   allPages.map(page => {
-    createPage({
-      path: `${page.page_type}/${page.slug}`,
-      component: require.resolve(`./src/templates/index.js`),
-      context: {
-        pageData: page,
-        blogPosts: landingPage.data.allButterPost.nodes,
-        menuData: menuItemsData
-      },
-    });
+    if (page.page_type !== "*") {
+      return createPage({
+        path: `${page.page_type}/${page.slug}`,
+        component: require.resolve(`./src/templates/index.js`),
+        context: {
+          pageData: page,
+          blogPosts: landingPage.data.allButterPost.nodes,
+          menuData: menuItemsData
+        },
+      });
+    }
   })
 
   // blog index

@@ -176,8 +176,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // all pages for preview mode
   const allPages = landingPage.data.allButterPage.nodes
-  allPages.map(page => {
-    if (page.page_type !== "*") {
+  allPages.filter(p => p.page_type !== "*").map(page => {
       return createPage({
         path: `${page.page_type}/${page.slug}`,
         component: require.resolve(`./src/templates/index.js`),
@@ -187,7 +186,6 @@ exports.createPages = async ({ graphql, actions }) => {
           menuData: menuItemsData
         },
       });
-    }
   })
 
   // blog index
@@ -228,7 +226,6 @@ exports.createPages = async ({ graphql, actions }) => {
         mainEntityName: category.name
       },
     });
-
   }
 
   // tags

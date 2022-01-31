@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react"
-import "../../assets/scss/main.scss"
 import Header from "./Header"
 import Footer from "./Footer"
 import ScrollToTop from "../containers/ScrollToTop"
+
+import "../../assets/css/bootstrap.min.css"
+import "../../assets/css/lineicons.css"
+import "../../assets/css/tiny-slider.css"
+import "../../assets/css/main.css"
 
 const Layout = ({ children, menuItems }) => {
   const [activeLink, setActiveLink] = useState("");

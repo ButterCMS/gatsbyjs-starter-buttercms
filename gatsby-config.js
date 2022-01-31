@@ -26,14 +26,6 @@ module.exports = {
         levels: 2 // Optional. Defaults to 2. Defines the levels of relationships to serialize
       },
     },
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        sassOptions: {
-          includePaths: ["assets/scss"],
-        }
-      },
-    },
     `gatsby-plugin-react-helmet`
   ]
 }

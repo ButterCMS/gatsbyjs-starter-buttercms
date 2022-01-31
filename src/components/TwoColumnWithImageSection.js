@@ -14,7 +14,7 @@ const TwoColumnWithImageSection = (props) => {
             <div className="cta-content-wrapper">
               <div className="section-title">
                 <h2 className="mb-20">{props.fields.headline}</h2>
-                <p dangerouslySetInnerHTML={{ __html: props.fields.subheadline }}></p>
+                <div dangerouslySetInnerHTML={{ __html: props.fields.subheadline }}></div>
                 <a href={props.fields.button_url} className="main-btn btn-hover border-btn mt-30">{props.fields.button_label}</a>
               </div>
             </div>

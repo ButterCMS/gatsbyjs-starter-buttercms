@@ -61,7 +61,7 @@ const BlogPostsSection = ({ type, text }) => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12">
-            {renderSection(type)}
+            {renderSection}
           </div>
         </div>
       </div>

@@ -22,14 +22,14 @@ const BlogPostsList = ({ blogPosts, categories }) => {
                       <h2 className="blog-roll-card-header"><Link to={`/blog/${post.slug}`}>{post.title}</Link></h2>
                       <ul className="blog-roll-card-meta-info">
                         <li>
-                          <a href="#"><img src={post.author.profile_image ? post.author.profile_image : placeholder} alt="#" />{post.author.first_name} {post.author.last_name}</a>
+                          <a href="#"><img src={post.author.profile_image || placeholder} alt="#" />{post.author.first_name} {post.author.last_name}</a>
                         </li>
                         <li>
                           <a href="#"><i className="lni lni-calendar"></i> {post.published}</a>
                         </li>
                         <li>
                           {post.tags.map(tag => {
-                            return <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</Link>
+                            return <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name} </Link>
                           })}
                         </li>
                       </ul>

@@ -39,7 +39,7 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                   <h2 className="single-post-header">{article.title}</h2>
                   <ul className="single-post-meta-info">
                     <li>
-                      <a href="#"><img src={article.author.profile_image ? article.author.profile_image : placeholder} alt="#" /> {article.author.first_name} {article.author.last_name}</a>
+                      <a href="#"><img src={article.author.profile_image || placeholder} alt="#" /> {article.author.first_name} {article.author.last_name}</a>
                     </li>
                     <li>
                       <a href="#"><i className="lni lni-calendar"></i> {article.published}
@@ -47,7 +47,7 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                     </li>
                     <li>
                       {article.tags.map(tag => {
-                        return <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</Link>
+                        return <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name} </Link>
                       })}
                     </li>
                   </ul>

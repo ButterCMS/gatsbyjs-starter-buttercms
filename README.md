@@ -6,6 +6,8 @@ Live Demo: https://gatsbyappliftingmasteroriginal.gatsbyjs.io/
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FButterCMS%2Fgatsby-applifting&env=BUTTER_CMS_API_KEY&envDescription=Your%20ButterCMS%20API%20Token&envLink=https%3A%2F%2Fbuttercms.com%2Fsettings%2F&project-name=gatsby-starter-buttercms&repo-name=gatsby-applifting&redirect-url=https%3A%2F%2Fbuttercms.com%2Fonboarding%2Fvercel-starter-deploy-callback%2F&production-deploy-hook=Deploy%20Triggered%20from%20ButterCMS&demo-title=ButterCMS%20Gatsby%20Starter&demo-description=Fully%20integrated%20with%20your%20ButterCMS%20account&demo-url=https%3A%2F%2Fgatsby-applifting.vercel.app%2F&demo-image=https://cdn.buttercms.com/r0tGK8xFRti2iRKBJ0eY&repository-name=gatsby-applifting)
 
+[Deploy with Gatsby Cloud](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/ButterCMS/gatsby-applifting)
+
 ## 1. Installation
 
 First, clone the repo and install the dependencies by running `npm install`
@@ -37,6 +39,8 @@ Congratulations! Your starter project is now live at [http://localhost:8000/](ht
 ## 4. Deploy on Gatsby Cloud
 
 Deploy your Gatsby app using Gatsby Cloud. With this guide, you'll create a copy of your starter project in your Git provider account, instantly deploy it, and institute a full content workflow connected to your ButterCMS account. Smooth.
+
+[Deploy with Gatsby Cloud](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/ButterCMS/gatsby-applifting)
 
 1. If you do not have an account, [join ButterCMS](https://buttercms.com/join/)
 2. Fork this repository

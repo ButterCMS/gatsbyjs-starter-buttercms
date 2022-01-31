@@ -14,7 +14,7 @@ const BlogPage = ({ location, pageContext: { pageData, menuData, categories, pag
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    const urlQuery = urlParams.get("query");
+    const urlQuery = urlParams.get("q");
 
     const locRegex = new RegExp(/\/blog\/search/, "mi")
     if (location.pathname.match(locRegex)) {

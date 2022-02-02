@@ -32,7 +32,7 @@ const Layout = ({ children, menuItems }) => {
     };
 
     window.document.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.document.removEventListener('scroll', onScroll);
+    return () => window.document.removeEventListener('scroll', onScroll);
   }, []);
 
 

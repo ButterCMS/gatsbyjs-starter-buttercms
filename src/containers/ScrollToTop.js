@@ -6,15 +6,11 @@ const ScrollToTop = () => {
   useEffect(() => {
     const onScroll = (event) => {
       // show or hide the back-top-top button
-      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
+      setIsVisible(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
     };
 
     window.document.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.document.removEventListener('scroll', onScroll);
+    return () => window.document.removeEventListener('scroll', onScroll);
   }, []);
 
 

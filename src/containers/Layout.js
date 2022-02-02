@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Helmet } from "react-helmet"
 import Header from "./Header"
 import Footer from "./Footer"
 import ScrollToTop from "../containers/ScrollToTop"
@@ -37,6 +38,10 @@ const Layout = ({ children, menuItems }) => {
 
   return (
     <>
+      <Helmet>
+        <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://buttercms.com;" />
+      </Helmet>
+
       <Header menuItems={menuItems} activeLink={activeLink} />
 
       {children}

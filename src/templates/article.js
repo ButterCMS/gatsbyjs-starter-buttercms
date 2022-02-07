@@ -1,8 +1,9 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import Layout from "../containers/Layout"
 import BlogWidget from "../components/BlogWidget"
 import SEO from "../components/SEO"
-import { Link } from "gatsby"
+import placeholder from "../../assets/images/placeholder.png"
 
 const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
   const article = pageData
@@ -10,7 +11,7 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
 
   return (
     <Layout menuItems={menuItems}>
-      <SEO title={article.title} description={article.meta_description} />
+      <SEO title={article.title} description={article.meta_description} image={article.featured_image} />
 
       <section id="blog-header" className="single-post-nav">
         <div className="container">
@@ -38,15 +39,15 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                   <h2 className="single-post-header">{article.title}</h2>
                   <ul className="single-post-meta-info">
                     <li>
-                      <a href="#">{article.author.profile_image && <img src={article.author.profile_image} alt="#" />} {article.author.first_name} {article.author.last_name}</a>
+                      <a href="#"><img src={article.author.profile_image || placeholder} alt="#" /> {article.author.first_name} {article.author.last_name}</a>
                     </li>
                     <li>
-                      <a href="#"><i className="lni lni-calendar"></i> {new Date(article.published).toDateString()}
+                      <a href="#"><i className="lni lni-calendar"></i> {article.published}
                       </a>
                     </li>
                     <li>
-                      {article.tags.map((tag, i) => {
-                        return <Link key={i} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name}</Link>
+                      {article.tags.map(tag => {
+                        return <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name} </Link>
                       })}
                     </li>
                   </ul>

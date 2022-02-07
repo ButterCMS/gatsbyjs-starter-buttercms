@@ -1,16 +1,6 @@
-import React, { useEffect } from "react"
+import React from "react"
 
 const Spinner = () => {
-  useEffect(() => {
-    function fadeout() {
-      document.querySelector('.preloader').style.opacity = '0';
-      document.querySelector('.preloader').style.display = 'none';
-    }
-
-    window.onload = function () { window.setTimeout(fadeout, 500); }
-    return () => window.onload = function () { window.setTimeout(fadeout, 500); }
-  }, []);
-
   return (
     <div className="preloader">
       <div className="loader">

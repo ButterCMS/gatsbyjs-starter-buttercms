@@ -4,10 +4,10 @@ import NoApiTokenSection from "../components/NoApiTokenSection"
 
 const NoApiKeyPage = () => {
   return (
-    <Layout>
+    <Layout menuItems={[]}>
       <NoApiTokenSection />
     </Layout>
-  )
+)
 }
 
 export default NoApiKeyPage

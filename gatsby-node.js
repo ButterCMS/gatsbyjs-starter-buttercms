@@ -1,5 +1,5 @@
 const butterCmsApiKey = process.env.BUTTER_CMS_API_KEY
-const butterCmsPreview = process.env.BUTTER_CMS_PREVIEW === "true" || process.env.BUTTER_CMS_PREVIEW === "1"
+const butterCmsPreview = !(process.env.BUTTER_CMS_PREVIEW === "false" || process.env.BUTTER_CMS_PREVIEW === "0")
 const butterSdk = require("buttercms");
 
 exports.onPreBootstrap = async () => {
@@ -8,6 +8,21 @@ exports.onPreBootstrap = async () => {
     await butter.category.list()
   } catch (e) {
     if (butterCmsApiKey) throw new Error("Your Butter token is set to an invalid value. Please verify your token is correct.")
+  }
+}
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { deletePage, createPage } = actions
+
+  if (page.path === '/dev-404-page/') {
+    deletePage(page)
+  } else if (page.path === '/404/') {
+    deletePage(page)
+    if (!butterCmsApiKey) {
+      createPage({ ...page, component: require.resolve(`./src/templates/noApiKey.js`)})
+    } else {
+      createPage(page)
+    }
   }
 }
 
@@ -49,10 +64,41 @@ exports.createPages = async ({ graphql, actions }) => {
           type
         }
       }
+      allButterPage {
+        nodes {
+          slug
+          page_type
+          seo {
+            title
+            description
+          }
+          body {
+            fields {
+              headline
+              subheadline
+              scroll_anchor_id
+              button_label
+              button_url
+              image
+              image_position
+              testimonial {
+                name
+                quote
+                title
+              }
+              features {
+                description
+                headline
+                icon
+              }
+            }
+            type
+          }
+        }
+      }
       allButterPost(
         limit: 2
         sort: {order: DESC, fields: published}
-        filter: {status: {in: ["published" ${butterCmsPreview ? ", \"draft\"" : ""}]}}
       ) {
         nodes {
           title
@@ -70,7 +116,6 @@ exports.createPages = async ({ graphql, actions }) => {
       allButterPost(
         sort: {order: DESC, fields: published}
         filter: {
-          status: {in: ["published" ${butterCmsPreview ? ", \"draft\"" : ""}]},
           ${category ? `categories: {elemMatch: {slug: {eq: \"${category}\"}}},` : ""}
           ${tag ? `tags: {elemMatch: {slug: {eq: \"${tag}\"}}},` : ""}
         }
@@ -85,7 +130,7 @@ exports.createPages = async ({ graphql, actions }) => {
           summary
           body
           meta_description
-          published
+          published(formatString: "ddd DD MMM YYYY")
           tags {
             name
             slug
@@ -118,14 +163,30 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allBlogPosts = await blogPageDataQuery()
 
+  // index
   createPage({
     path: `/`,
     component: require.resolve(`./src/templates/index.js`),
     context: {
-      pageData: landingPage,
+      pageData: landingPage.data.butterPage,
+      blogPosts: landingPage.data.allButterPost.nodes,
       menuData: menuItemsData
     },
   });
+
+  // all pages for preview mode
+  const allPages = landingPage.data.allButterPage.nodes
+  allPages.filter(p => p.page_type !== "*").map(page => {
+      return createPage({
+        path: `${page.page_type}/${page.slug}`,
+        component: require.resolve(`./src/templates/index.js`),
+        context: {
+          pageData: page,
+          blogPosts: landingPage.data.allButterPost.nodes,
+          menuData: menuItemsData
+        },
+      });
+  })
 
   // blog index
   createPage({
@@ -165,7 +226,6 @@ exports.createPages = async ({ graphql, actions }) => {
         mainEntityName: category.name
       },
     });
-
   }
 
   // tags

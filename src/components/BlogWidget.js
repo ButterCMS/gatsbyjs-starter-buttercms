@@ -17,8 +17,8 @@ const BlogWidget = ({ categories }) => {
       <div className="widget categories-widget">
         <h5 className="widget-title">Categories</h5>
         <ul className="categories-list">
-          {categories.map((category, i) => {
-            return <li key={i}>
+          {categories.map(category => {
+            return <li key={category.slug}>
               <Link to={`/blog/category/${category.slug}`}>{category.name}</Link>
             </li>
           })}

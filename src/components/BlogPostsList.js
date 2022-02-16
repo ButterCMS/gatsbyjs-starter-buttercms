@@ -27,11 +27,11 @@ const BlogPostsList = ({ blogPosts, categories }) => {
                         <li>
                           <a href="#"><i className="lni lni-calendar"></i> {post.published}</a>
                         </li>
-                        <li>
-                          {post.tags.map(tag => {
-                            return <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name} </Link>
-                          })}
-                        </li>
+                        {post.tags.map(tag => {
+                          return <li>
+                            <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name} </Link>
+                          </li>
+                        })}
                       </ul>
                     </div>
                     {post.featured_image && <div className="single-post-thumbnail">

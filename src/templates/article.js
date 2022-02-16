@@ -45,11 +45,11 @@ const ArticlePage = ({ pageContext: { pageData, menuData, categories } }) => {
                       <a href="#"><i className="lni lni-calendar"></i> {article.published}
                       </a>
                     </li>
-                    <li>
-                      {article.tags.map(tag => {
-                        return <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name} </Link>
-                      })}
-                    </li>
+                    {article.tags.map(tag => {
+                      return <li>
+                        <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name} </Link>
+                      </li>
+                    })}
                   </ul>
                 </div>
 

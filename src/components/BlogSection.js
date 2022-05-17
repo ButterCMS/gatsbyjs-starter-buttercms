@@ -23,7 +23,7 @@ const BlogSection = (props) => {
           </div>
         </div>
         <div className="row justify-content-center">
-          {props.blogPosts.map(blogPost => <BlogPostTile key={blogPost.url} {...blogPost} />)}
+          {props.blogPosts.map(blogPost => <BlogPostTile key={blogPost.slug} {...blogPost} />)}
         </div>
       </div>
     </section>

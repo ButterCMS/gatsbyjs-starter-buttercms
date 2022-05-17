@@ -103,7 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           title
           summary
-          url
+          slug
           featured_image
           featured_image_alt
         }

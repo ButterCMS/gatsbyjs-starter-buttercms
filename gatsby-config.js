@@ -4,23 +4,28 @@ const previewMode = !(process.env.BUTTER_CMS_PREVIEW === "false" || process.env.
 
 module.exports = {
   siteMetadata: {
-    title: `ButterCMS Gatsby.js`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `ButterCMS Gatsby.js Starter Project`,
+    siteUrl: `https://gatsbyjs-starter-buttercms-vercel.vercel.app/`,
   },
   plugins: [
     {
       resolve: `gatsby-source-buttercms`,
       options: {
         authToken: process.env.BUTTER_CMS_API_KEY,
-        // Optional array of Collection key
+        // Use the optional contentFields array for ButterCMS Collections. Any
+        // Collections you want the app to have access to should have their
+        // slugs explicitly included in the keys array, as seen below.
         contentFields: {
           keys: [`navigation_menu`],
           // Optional. Set to 1 to enable test mode for viewing draft content.
           test: previewMode,
         },
-        // Optional array of page type keys
+        // Use the optional pageTypes array for ButterCMS PageTypes. Any 
+        // Page Types you want the app to have access to should have their
+        // slugs explicitly included in the pageTypes array, as seen below.
         pageTypes: [`landing-page`],
-        // Optional array of locales (if configured in your account)
+        // Specify locales you want the app to have access to, if you have 
+        // locales enabled in your account.
         locales: [],
         preview: previewMode, // Return draft content
         levels: 2 // Optional. Defaults to 2. Defines the levels of relationships to serialize

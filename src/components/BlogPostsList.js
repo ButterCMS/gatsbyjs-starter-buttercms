@@ -15,11 +15,13 @@ const BlogPostsList = ({ blogPosts, categories }) => {
 
               {blogPosts.length === 0 && <ZeroData />}
 
-              {blogPosts.map(post => {
-                return (<div key={post.slug} className="col-12 col-lg-6">
+              {blogPosts.map(post => 
+                (<div key={post.slug} className="col-12 col-lg-6">
                   <div className="blog-roll-card">
                     <div className="blog-roll-card-meta">
-                      <h2 className="blog-roll-card-header"><Link to={`/blog/${post.slug}`}>{post.title}</Link></h2>
+                      <h2 className="blog-roll-card-header">
+                        <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                      </h2>
                       <ul className="blog-roll-card-meta-info">
                         <li>
                           <a href="#"><img src={post.author.profile_image || placeholder} alt="#" />{post.author.first_name} {post.author.last_name}</a>
@@ -27,11 +29,11 @@ const BlogPostsList = ({ blogPosts, categories }) => {
                         <li>
                           <a href="#"><i className="lni lni-calendar"></i> {post.published}</a>
                         </li>
-                        {post.tags.map(tag => {
-                          return <li>
-                            <Link key={tag.slug} to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name} </Link>
-                          </li>
-                        })}
+                        {post.tags.map(tag => 
+                          (<li key={tag.slug}>
+                            <Link to={`/blog/tag/${tag.slug}`}><i className="lni lni-tag"></i> {tag.name} </Link>
+                          </li>)
+                        )}
                       </ul>
                     </div>
                     {post.featured_image && <div className="single-post-thumbnail">
@@ -46,7 +48,7 @@ const BlogPostsList = ({ blogPosts, categories }) => {
                     </div>
                   </div>
                 </div>)
-              })}
+              )}
 
             </div>
           </div>

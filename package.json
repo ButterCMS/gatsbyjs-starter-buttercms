@@ -1,9 +1,9 @@
 {
   "name": "butter-cms-gatsby.js",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "private": true,
-  "description": "ButterCMS Gatsby.js",
-  "author": "Prokop Simek",
+  "description": "ButterCMS Gatsby.js Starter",
+  "author": "ButterCMS",
   "keywords": [
     "gatsby"
   ],
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "buttercms": "^1.2.10",
+    "buttercms": "^1.2.15",
     "gatsby": "^5.7.0",
     "gatsby-plugin-google-analytics": "^5.7.0",
     "gatsby-plugin-image": "^3.7.0",
